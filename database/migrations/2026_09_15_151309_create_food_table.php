@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    // Buat struktur tabel katalog menu saat migration dijalankan.
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('foods', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->enum('category', ['Makanan', 'Minuman', 'Cemilan']);
+            $table->integer('price');
+            $table->text('description');
+            // Gambar bersifat opsional; path file disimpan sebagai teks.
+            $table->string('image')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('food');
+    }
+};

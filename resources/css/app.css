@@ -1,0 +1,6 @@
+/* Lapisan dasar Tailwind untuk reset dan fondasi style aplikasi. */
+@tailwind base;
+/* Komponen reusable dari Tailwind. */
+@tailwind components;
+/* Utility class Tailwind yang digunakan oleh template Blade. */
+@tailwind utilities;

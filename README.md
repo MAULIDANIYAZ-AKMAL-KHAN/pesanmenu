@@ -43,6 +43,17 @@ Halaman katalog customer tersedia di `/`, sedangkan dashboard admin tersedia di 
 
 Admin dapat mengelola master makanan melalui menu **Kelola Menu** dan memperbarui status pesanan dari dashboard.
 
+### Deploy ke Vercel
+
+Project menggunakan Docker/FrankenPHP di Vercel. Hubungkan repository ini ke Vercel, lalu atur environment variables produksi berikut di pengaturan project:
+
+- `APP_KEY` — buat sekali dengan `php artisan key:generate --show`; simpan nilainya sebagai secret.
+- `APP_URL` — URL deployment produksi.
+- `DB_CONNECTION=mysql`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` — kredensial database MySQL eksternal yang dapat diakses dari Vercel.
+- `SESSION_DRIVER=database`, `CACHE_STORE=database`, dan `QUEUE_CONNECTION=database`.
+
+Jalankan `php artisan migrate --force` sekali terhadap database produksi sebelum menggunakan aplikasi. Gunakan koneksi database produksi hanya dari mesin tepercaya dan jangan commit kredensial. Unggahan gambar saat ini disimpan di filesystem lokal, yang tidak persisten di Vercel; konfigurasi object storage eksternal sebelum menggunakan fitur unggah gambar.
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.

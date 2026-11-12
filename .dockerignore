@@ -1,0 +1,9 @@
+.git
+.vercel
+.env*
+vendor
+node_modules
+public/build
+database/database.sqlite
+storage/logs
+tests
